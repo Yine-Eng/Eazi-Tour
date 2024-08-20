@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="Favicons/eazi-favicon_io/favicon.ico" type="image/x-icon">
+
+    <!-- font awesome icons -->
+    <script src="https://kit.fontawesome.com/1a552ea376.js" crossorigin="anonymous"></script>
+
+    <!-- swiper js -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <!-- css -->
+    <link rel="stylesheet" href="style.css"/>
+
+    <title>Eazi Tour</title>
+</head>
+<body>
+    <!-- NAV BAR -->
+    <nav>
+        <div class="nav-header">
+            <div class="nav-logo">
+                <a href="#" class="logo">Eazi<span>Tour</span></a>
+            </div>
+            <div class="nav-menu-bar" id="menu-bar">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+        
+        <ul class="nav-content" id="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#destinations">Destinations</a></li>
+            <li><a href="#packages">Packages</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+        </ul>
+    </nav>
+
+    <!-- HOME SECTION -->
+    <header class="header" id="home">
+        <div class="header-container">
+            <h1>TOUR<br/><span>THE WORLD!</span></h1>
+            <p>Every adventure is an experience</p>
+
+            <form action="/">
+                <div class="input-fields">
+                    <span><i class="fa-solid fa-map"></i></span>
+                    <input type="text" id="destination-field" name="destination" placeholder="Your Destination?" autocomplete="country" required/>
+                </div>
+
+                <div class="input-fields">
+                    <span><i class="fa-solid fa-location-dot"></i></span>
+                    <input type="text" id="location-field" name="location" placeholder="Your location?" autocomplete="address-level2" required/>
+                </div>
+
+                <div class="input-fields">
+                    <span><i class="fa-solid fa-list-ol"></i></span>
+                    <input type="text" id="purpose-field" name="purpose" placeholder="Purpose of tour" autocomplete="off" required/>
+                </div>
+
+                <div class="input-fields">
+                    <button class="btn">Submit</button>
+                </div>
+            </form>
+
+            <!-- Checkbox for triggering Eazi destination tool -->
+            <div class="checkbox-container">
+                <label for="trigger-eazi-tool">
+                    <input type="checkbox" id="trigger-eazi-tool" name="trigger-eazi-tool">
+                    Check me if you don't have a planned destination.
+                </label>
+            </div>
+        </div>
+    </header>
+
+    <!-- Eazi Destination Tool Checkbox Trigger Response: select -->
+    <section class="eazi-select-tool">
+        <div class="section-container">
+            <h2 class="section-header">Eazi Destination Tool</h2>
+            <p class="section-description">
+                Don't know where to go? We've got you covered. Use our Eazi destination tool to pick
+                a destination.
+            </p>
+            <div class="eazi-continent-select">
+                <form action="/">
+                    <select id="continent-select" required>
+                        <option value="">Select a continent</option>
+                        <option value="Africa">Africa</option>
+                        <option value="Asia">Asia</option>
+                        <option value="Europe">Europe</option>
+                        <option value="North America">North America</option>
+                        <option value="South America">South America</option>
+                    </select>
+                    <button class="btn">
+                        Search
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="services-container" id="services">
+        <div class="services-card">
+            <img src="logos/travel-1.png" alt="travel the world png">
+            <div>
+                <h4>Great Destinations</h4>
+                <p>Visit places that leave you priceless memories</p>
+            </div>
+        </div>
+
+        <div class="services-card">
+            <img src="logos/time-1.png" alt="travel the world png">
+            <div>
+                <h4>Travel All-Year Round</h4>
+                <p>Eazily Tour your desired location in no time.</p>
+            </div>
+        </div>
+
+        <div class="services-card">
+            <img src="logos/ticket-1.png" alt="travel the world png">
+            <div>
+                <h4>Cheap Prices</h4>
+                <p>We're the best: quality for cheap prices!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESTINATIONS SECTION -->
+    <section class="destination" id="destinations">
+        <div class="destination-container">
+            <h2 class="section-header">Top Destinations</h2>
+            <p class="section-desription">
+                Here are some top destinations for travellers like you
+            </p>
+
+            <div class="destinations-grid">
+                <div class="destination-card">
+                    <img src="destinations/south-africa.jpg" alt="South Africa">
+                    <div class="destination-content">South Africa</div>
+                </div>
+
+                <div class="destination-card">
+                    <img src="destinations/italy.jpg" alt="Italy">
+                    <div class="destination-content">Italy</div>
+                </div>
+
+                <div class="destination-card">
+                    <img src="destinations/australia2.jpg" alt="Australia">
+                    <div class="destination-content">Australia</div>
+                </div>
+
+                <div class="destination-card">
+                    <img src="destinations/paris.jpg" alt="France">
+                    <div class="destination-content">France</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eazy Destination Tool Finds: Response to Continent Selection -->
+    <section class="eazi-destination-tool-finds">
+        <div class="destination-container">
+            <h2 class="section-header">Eazi Destination Tool Finds</h2>
+            <p class="section-desription">
+                Consider any of these countries suggested by our tool!
+            </p>
+
+            <div class="destinations-grid">
+                <!-- Destination cards populated by the API -->
+                <!-- Placeholder cards -->
+                <div class="destination-card" id="eazi-destination-card-1">
+                    <img alt="Eazi Destination Find 1">
+                    <div class="destination-content">Destination Name 1</div>
+                </div>
+
+                <div class="destination-card" id="eazi-destination-card-2">
+                    <img alt="Eazi Destination Find 2">
+                    <div class="destination-content">Destination Name 2</div>
+                </div>
+
+                <div class="destination-card" id="eazi-destination-card-3">
+                    <img alt="Eazi Destination Find 3">
+                    <div class="destination-content">Destination Name 3</div>
+                </div>
+
+                <div class="destination-card" id="eazi-destination-card-4">
+                    <img alt="Eazi Destination Find 4">
+                    <div class="destination-content">Destination Name 4</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DISCOUNT SECTION -->
+    <section class="discount">
+        <div class="discount-container">
+            <h2>
+                Get a 15% discount<br/><span>by joining Eazy Tour</span>
+            </h2>
+            <div class="dicount-btn">
+                <button class="btn">
+                    Join us
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PACKAGES SECTION -->
+    <section class="section-container" id="packages">
+        <h2 class="section-header">Exclusive Packages</h2>
+        <p class="section-description">
+            Don't know where to go? Look here!
+        </p>
+
+        <div class="package-grid">
+            <div class="package-card">
+                <img src="packages/img3.jpg" alt="package">
+                <div class="package-card-details">
+                    <h4>Isla Beach Tour</h4>
+                    <p>
+                        White sand beaches, fantastic food, and unique nature
+                        experiences. Isla Holbox is Mexico's best-kept secret.
+                    </p>
+                    <div>
+                        <button class="btn">Book Now</button>
+                        <h3>$170</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="package-card">
+                <img src="packages/img4.jpg" alt="package">
+                <div class="package-card-details">
+                    <h4>Burj Khalifa Tour</h4>
+                    <p>
+                        Get to see indoor Ski Dubai and Burj Khalifa, the tallest
+                        building on the planet.
+                    </p>
+                    <div>
+                        <button class="btn">Book Now</button>
+                        <h3>$310</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="package-card">
+                <img src="packages/img5.jpg" alt="package">
+                <div class="package-card-details">
+                    <h4>Serengeti National Park Tour</h4>
+                    <p>
+                        Have a chance to see the wildlife in Tanzania. This safari tour
+                        is one of the best.
+                    </p>
+                    <div>
+                        <button class="btn">Book Now</button>
+                        <h3>$240</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="package-card">
+                <img src="packages/img8.jpg" alt="package">
+                <div class="package-card-details">
+                    <h4>Chiang Mai Tour</h4>
+                    <p>
+                        Want to visit breathtaking temples and see elephants? Book
+                        a tour to northwest Thailand.
+                    </p>
+                    <div>
+                        <button class="btn">Book Now</button>
+                        <h3>$240</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS SECTION -->
+    <section class="reviews-container" id="reviews">
+        <h2 class="section-header">Customer Reviews</h2>
+        <p class="section-description">
+            We make your break from work worth it!
+        </p>
+
+        <!-- Slider main container -->
+        <div class="swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide">
+                    <div class="review-card">
+                    <img src="reviews/img2.jpg" alt="reviewer">
+                    <span><i class="fa-solid fa-quote-left"></i></span>
+                    <p>
+                        Discovering new destinations through Eazi Tour has transformed the way 
+                        I travel. Their platform offers incredible ease and variety, perfect for
+                        finding hidden gems during my downtime from tech conferences.
+                    </p>
+                    <h4>Chris Shrader</h4>
+                    <h5>Networking Expert</h5>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="review-card">
+                    <img src="reviews/img7.jpg" alt="reviewer">
+                    <span><i class="fa-solid fa-quote-left"></i></i></span>
+                    <p>
+                        Eazi Tour made planning my semester break so simple! I enjoyed a refreshing
+                        getaway to Isla Beach, and now I'm planning a cultural tour to Italy next.
+                        Their service is a student's best friend for affordable travel!
+                    </p>
+                    <h4>Fatima Hassan</h4>
+                    <h5>Student</h5>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="review-card">
+                    <img src="reviews/img8.jpg" alt="reviewer">
+                    <span><i class="fa-solid fa-quote-left"></i></i></span>
+                    <p>
+                        After long shifts, a real vacation is just what I need to rejuvenate. Last year's
+                        trip to Tanzania was life-changing, thanks to Eazi Tour's well-organized itinerary
+                        and thoughtful destination choices. Would recommend them to you.
+                    </p>
+                    <h4>Britney Taylor</h4>
+                    <h5>Nurse</h5>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="review-card">
+                    <img src="reviews/img6.jpg" alt="reviewer">
+                    <span><i class="fa-solid fa-quote-left"></i></i></span>
+                    <p>
+                        Traveling for photo shoots can be hectic. Eazi Tour's reliable service allows me to
+                        extend my business trips into personal vacations effortlessly. Places like Paris and
+                        Dubai became not just work destinations but also leisure havens.
+                    </p>
+                    <h4>Sarah Wells</h4>
+                    <h5>Model</h5>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="review-card">
+                    <img src="reviews/img1.jpg" alt="reviewer">
+                    <span><i class="fa-solid fa-quote-left"></i></i></span>
+                    <p>
+                        Eazi Tour not only provides great travel deals but also ensures a smooth experience
+                        from start to finish. I managed to explore the historic sites of China last summer,
+                        all arranged perfectly to fit my tight schedule.
+                    </p>
+                    <h4>Miguel Carabao</h4>
+                    <h5>Lawyer</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- pagination -->
+            <div class="swiper-pagination">
+            </div>
+        </div>
+    </section>
+
+    <section class="subscribe">
+        <div class="subscribe-container">
+            <h2>Get updates about new packages</h2>
+            <div>
+                <p>Don't be left out! Subscribe to our newsletter!</p>
+                <form action="/">
+                    <input type="email" id="subscribe-email" name="email" placeholder="Enter Your Email Here" autocomplete="email" required/>
+                    <button class="btn" id="subscribe-btn">SUBSCRIBE</button>
+                    
+                    <!-- Messages container for error and success -->
+                    
+                </form>
+                <div class="email-res">
+                    <small id="valid-input" class="valid-message">Subscription successful!</small>
+                </div>
+                <div class="email-res"><small id="email-error" class="error-message">Please enter a valid email address.</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <a href="#" class="logo">Eazi<span>Tour</span></a>
+                </div>
+                <p>
+                    Plan a tour, even when you don't know your destination. Use our tool,
+                    book a tour and enjoy our quality services!
+                </p>
+
+                <h4>FOLLOW US</h4>
+                <ul class="footer-socials">
+                    <li>
+                        <a href="#"><img class="socials" src="socials\IG_brand_asset_pack_2023\01 Static Glyph\01 Gradient Glyph\Instagram_Glyph_Gradient.png" alt="Instagram logo"/></a>
+                    </li>
+
+                    <li>
+                        <a href="#"><img class="socials" src="socials\Facebook-Brand-Asset-Pack\Facebook Brand Asset Pack\Logo\Primary Logo\Facebook_Logo_Primary.png" alt="Facebook logo"></a>
+                    </li>
+
+                    <li>
+                        <a href="#"><img class="socials" src="socials\x-logo\logo-black.png" alt="X logo"></a>
+                    </li>
+
+                    <li>
+                        <a href="#"><img class="socials" src="socials\LinkedIn-Logos\LinkedIn-Logos\LI-In-Bug.png" alt="LinkedIn logo"></a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>DESTINATIONS</h4>
+                <ul class="footer-links">
+                    <li><a href="#">United States</a></li>
+                    <li><a href="#">Ghana</a></li>
+                    <li><a href="#">United Kingdom</a></li>
+                    <li><a href="#">China</a></li>
+                    <li><a href="#">Brazil</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>QUICK LINKS</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Blogs</a></li>
+                    <li><a href="#">Awards</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>OUR ACTIVITIES</h4>
+                <ul class="footer-links">
+                    <li><a href="/">Trekking</a></li>
+                    <li><a href="/">Peak Climbing</a></li>
+                    <li><a href="#">Biking</a></li>
+                    <li><a href="#">River Rafting</a></li>
+                    <li><a href="#">Cultural Tour</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bar">
+            &#169; 2024 Sampson Anaba Yine-Eng. All Rights Reserved
+        </div>
+    </footer>
+
+    <!-- scrollreveal animation -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- swiper js -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- javascript -->
+    <script src="script.js"></script>
+</body>
+</html>
