@@ -106,7 +106,7 @@ async function fetchCountriesByContinent(continent) {
 
 async function fetchImagesForCountries(countries) {
     const imagePromises = countries.map(async (country) => {
-        const response = await fetch(`http://localhost:3000/api/photos?query=${country.name.common}`);
+        const response = await fetch(`https://eazi-tour-backend.vercel.app/api/photos?query=${country.name.common}`);
         const data = await response.json();
         
         if (data.results.length === 0) {
