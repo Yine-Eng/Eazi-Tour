@@ -104,21 +104,24 @@ async function fetchCountriesByContinent(continent) {
     return countries;
 }
 
+// Function to fetch images for countries using my backend API
 async function fetchImagesForCountries(countries) {
     const imagePromises = countries.map(async (country) => {
-        const response = await fetch(`https://eazi-tour-backend.vercel.app/api/photos?query=${country.name.common}`);
-        const data = await response.json();
-        
-        if (data.results.length === 0) {
-            console.warn(`No images found for ${country.name.common}`);
+        try {
+            const response = await fetch(`https://eazi-tour-backend.vercel.app/api/photos?query=${country.name.common}`);
+            const data = await response.json();
+
+            // Check if imageUrl exists in the data
+            if (!data.imageUrl) {
+                console.warn(`No image found for ${country.name.common}`);
+                return { country: country.name.common, imageUrl: '' };
+            }
+
+            return { country: country.name.common, imageUrl: data.imageUrl };
+        } catch (error) {
+            console.error(`Error fetching image for ${country.name.common}:`, error);
             return { country: country.name.common, imageUrl: '' };
         }
-
-        // Attempts to find an image with the dimensions 1920x1280 or uses the first available image
-        const suitableImage = data.results.find(img => img.width === 1920 && img.height === 1280);
-        const imageUrl = suitableImage?.urls?.regular || data.results[0]?.urls?.regular || '';
-        
-        return { country: country.name.common, imageUrl };
     });
 
     const images = await Promise.all(imagePromises);
@@ -131,16 +134,16 @@ function updateEaziDestinationToolFinds(images) {
         const imgElement = card.querySelector('img');
         const contentElement = card.querySelector('.destination-content');
 
-        // Updates the image and content
+        // Update the image and content
         imgElement.src = imageData.imageUrl;
         imgElement.alt = imageData.country;
         contentElement.textContent = imageData.country;
 
-        // Makes the destination card fully visible
+        // Make the destination card fully visible
         card.style.opacity = '1';
     });
 
-    // Makes the eazi-destination-tool-finds section visible and scrolls to it
+    // Make the eazi-destination-tool-finds section visible and scrolls to it
     eaziDestinationToolFinds.style.display = 'block';
     eaziDestinationToolFinds.scrollIntoView({ behavior: 'smooth' });
 }
@@ -159,9 +162,12 @@ async function handleSearch(event) {
         // Fetch countries by continent and randomize selection
         const countries = await fetchCountriesByContinent(continent);
         const randomCountries = countries.sort(() => 0.5 - Math.random()).slice(0, 4);
+        console.log('Countries:', randomCountries);
         
         // Fetch images for the selected countries
         const images = await fetchImagesForCountries(randomCountries);
+
+        console.log('Images:', images);
         
         // Update the Eazi Destination Tool Finds section with the images
         updateEaziDestinationToolFinds(images);

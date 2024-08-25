@@ -1,7 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors'); // Cross-Origin Resource Sharing: Needed for my backend to successfully communicate with my front end
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args)); // Dynamic import for node-fetch
+const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
 // Load environment variables from .env file
 dotenv.config();
@@ -11,23 +11,34 @@ const port = process.env.PORT || 3000; // Dynamic port from environment variable
 
 // Apply CORS and allow requests from frontend's domain
 app.use(cors({
-    origin: 'https://eazi-tour.vercel.app', // Allows only domain of my frontend
-    methods: ['GET', 'POST'], // Allowed methods
-    allowedHeaders: ['Content-Type'] // ALlowed headers
+    origin: ['http://127.0.0.1:5500', 'https://eazi-tour.vercel.app/'], // both Local and production URLs are allowed
 }));
 
 // Endpoint to fetch Unsplash images
 app.get('/api/photos', async (req, res) => {
     const { query } = req.query; // Get the query parameter from the request
+
+    if (!query) {
+        return res.status(400).json({ error: 'Query parameter is required' });
+    }
+
     try {
         // Construct Unsplash API URL with the query and orientation parameters
         const unsplashUrl = `https://api.unsplash.com/search/photos?query=${encodeURIComponent(query)}&per_page=1&orientation=landscape&client_id=${process.env.UNSPLASH_ACCESS_KEY}`;
         const response = await fetch(unsplashUrl); // Fetch images from Unsplash API
         const data = await response.json(); // Parse the response as JSON
-        res.json(data); // Send the data back to the frontend
+
+        console.log(data);
+
+        if (data.results.length === 0) {
+            return res.status(404).json({ error: 'No images found' });
+        }
+
+        const imageUrl = data.results[0]?.urls?.regular || '';
+        return res.json({ country: query, imageUrl });
     } catch (error) {
         // Handle any errors during the fetch process
-        res.status(500).json({ error: 'Failed to fetch images from Unsplash' });
+        return res.status(500).json({ error: 'Failed to fetch images from Unsplash' });
     }
 });
 
