@@ -1,27 +1,34 @@
-**Eazi Tour - Frontend**
-Eazi Tour is a web application designed to help users explore destinations around the world. The app features a special tool that allows users to search for images of countries based on their continent of interest.
+# Eazi Tour 🌍
 
-**Features**
-**Eazi Destination Tool:** Users can search for destinations based on continents, which will trigger a tool that displays images of randomly selected countries.
+> A web application that lets users explore destinations around the world based on their continent of interest, with a tool that showcases images from various countries.
 
-**Triggerable Tool:** The special Eazi Destination Tool remains hidden on the homepage until certain conditions are met (e.g., a checkbox is triggered), at which point it is revealed and becomes interactive.
+### Status: 🚀 Deployed
 
-**Limited Requests:** The project is limited to 50 requests per hour due to the restrictions from the Unsplash API (free-tier limit). Each click of the search button under the Eazi Destination Tool section exhausts 4 out of the 50 available requests per hour.
+### 📅 Expected Updates:
+I plan to continuously enhance the search capabilities and user experience for spontaneous travelers. Stay tuned for additional features!
 
-**Usage**
-1. Visit the homepage and explore the features.
+### 🛠️ Tech Stack:
+- **Frontend:** HTML, CSS, JavaScript
+- **Libraries:** Swiper.js (carousel), ScrollReveal.js (animations)
+- **Backend:** Node.js & Express.js
+- **APIs:** Unsplash API, Rest Countries API
+- **Deployment:** Vercel (both frontend and backend)
 
-2. Trigger the special tool in the home section by interacting with the app (e.g., checking the box).
+### 🔥 Features:
+- **Eazi Destination Tool:** Search for destinations based on continents. Trigger hidden tools that reveal country images when certain conditions (e.g., checkbox interactions) are met.
+- **Limited Requests:** Due to Unsplash API limits (50 requests per hour), each click of the search button consumes 4 requests. Use wisely!
+- **Random Image Selector:** The tool shows random country images, making each search unique and exciting.
 
-3. Select a continent and click the search button to reveal destination images.
+### 🎯 How to Use:
+1. **Explore**: Visit the homepage and explore its features.
+2. **Trigger the Tool**: Interact with the app by checking the appropriate box to reveal the special destination search tool.
+3. **Select a Continent**: Choose a continent and click "search" to reveal destination images.
+4. **Enjoy the Adventure**: Experience the world through beautiful photos, and plan your next journey!
 
+### 🚀 Live Demo:
+- [Eazi Tour Frontend](https://eazi-tour.vercel.app/)
 
-**Tech Stack**
-1. HTML, CSS, JavaScript
+### 🛠️ Backend:
+- [Eazi Tour Backend](https://eazi-tour-backend.vercel.app/)
 
-2. Swiper.js for carousel functionality (review section)
-
-3. ScrollReveal.js for animations
-
-**Deployed Version**
-You can try out the live app here: [Eazi Tour Frontend](https://eazi-tour.vercel.app/)
+**Feel free to explore the app and provide feedback!**
