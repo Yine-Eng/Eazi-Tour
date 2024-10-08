@@ -29,6 +29,6 @@ I plan to continuously enhance the search capabilities and user experience for s
 - [Eazi Tour Frontend](https://eazi-tour.vercel.app/)
 
 ### 🛠️ Backend:
-- [Eazi Tour Backend](https://eazi-tour-backend.vercel.app/)
+- [Eazi Tour Backend repository](https://github.com/Yine-Eng/eazi-tour-backend)
 
 **Feel free to explore the app and provide feedback!**
